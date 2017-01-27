@@ -178,18 +178,18 @@ footer #currentLoc, footer #searchIcon, footer #info {
 
 footer #currentLoc {
   margin-right: 0.5em;
-  background-image: url(/images/current_dark.png);
+  background-image: url("../images/current_dark.png");
 }
 
 footer #searchIcon {
-  background-image: url(/images/search_dark.png);
+  background-image: url("../images/search_dark.png");
 }
 
 footer #info {
   align-self: flex-end;
   margin-left: auto;
   float: right;
-  background-image: url(/images/info.svg);
+  background-image: url("../images/info.svg");
 }
 
 #popUp {
@@ -206,7 +206,7 @@ footer #info {
 }
 
 #popUp.loader {
-  background-image: url(/images/loading.gif);
+  background-image: url("../images/loading.gif");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 4em 4em;
