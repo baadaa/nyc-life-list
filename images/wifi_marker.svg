@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.1 (29687) - http://www.bohemiancoding.com/sketch -->
+    <title>Marker Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#DA123D" offset="0%"></stop>
+            <stop stop-color="#B3071C" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="17" cy="17" r="17"></circle>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="1-Wifi" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop:-Detail-View" transform="translate(-370.000000, -295.000000)">
+            <g id="Markers" transform="translate(85.000000, 217.000000)">
+                <g id="Marker-Copy-2" transform="translate(289.000000, 80.000000)">
+                    <g id="Oval-31">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g id="Wifi-Copy" transform="translate(7.000000, 11.000000)" fill="#FFFFFF">
+                        <path d="M1.91498214,5.49008689 C6.18016964,1.22001931 13.404875,1.22001931 17.6918237,5.49008689 C17.9094353,5.70794748 18.1923304,5.81687777 18.4752254,5.81687777 C18.7581205,5.81687777 19.0410156,5.70794748 19.2586272,5.49008689 C19.6938504,5.0543657 19.6938504,4.35721181 19.2586272,3.92149063 C16.7560938,1.41609384 13.404875,0.0435721181 9.79252232,0.0435721181 C6.18016964,0.0435721181 2.82895089,1.41609384 0.326417411,3.92149063 C-0.108805804,4.35721181 -0.108805804,5.0543657 0.326417411,5.49008689 C0.761640625,5.92580807 1.47975893,5.92580807 1.91498214,5.49008689 L1.91498214,5.49008689 Z" id="Shape"></path>
+                        <path d="M13.2090246,11.0891041 C13.4919196,11.0891041 13.7748147,10.9801738 13.9924263,10.7623132 C14.4276496,10.326592 14.4276496,9.62943811 13.9924263,9.19371693 C11.7075045,6.90618072 7.85577902,6.90618072 5.57085714,9.19371693 C5.13563393,9.62943811 5.13563393,10.326592 5.57085714,10.7623132 C6.00608036,11.1980344 6.7024375,11.1980344 7.13766071,10.7623132 C8.530375,9.3680054 10.9893862,9.3680054 12.4038616,10.7623132 C12.6432344,10.9801738 12.9261295,11.0891041 13.2090246,11.0891041 L13.2090246,11.0891041 Z" id="Shape"></path>
+                        <path d="M15.842125,8.45299092 C16.1250201,8.45299092 16.4079152,8.34406062 16.6255268,8.12620003 C17.06075,7.69047885 17.06075,6.99332496 16.6255268,6.55760378 C12.7955625,2.72325738 6.78948214,2.72325738 2.95951786,6.55760378 C2.52429464,6.99332496 2.52429464,7.69047885 2.95951786,8.12620003 C3.39474107,8.56192121 4.09109821,8.56192121 4.52632143,8.12620003 C7.52936161,5.11972388 12.055683,5.11972388 15.0369621,8.12620003 C15.2763348,8.34406062 15.5592299,8.45299092 15.842125,8.45299092 L15.842125,8.45299092 Z" id="Shape"></path>
+                        <ellipse id="Oval" cx="9.79252232" cy="13.1369936" rx="1.84969866" ry="1.85181502"></ellipse>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

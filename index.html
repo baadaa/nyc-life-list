@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>NYC Life List</title>
+  <meta name="description" content="Find three things any New Yorker on the go would need: free WiFi hotspot, public restrooms, and subway entrances">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+
+  <link rel="apple-touch-icon" href="images/icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/icon">
+  <link rel="icon" href="favicon.ico" type="image/icon">
+
+  <link rel="stylesheet" type="text/css" href="_css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="_css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <section class="logo">NYC Life List</section>
+    <nav>
+      <ul>
+        <li id="wifi" class="selected"><img src="images/wifi.svg">WiFi<br>Hotspot</li>
+        <li id="subway"><img src="images/turnstile.svg">Subway<br>Entrance</li>
+        <li id="restroom"><img src="images/toilet.svg">Public<br>Restroom</li>
+      </ul>
+    </nav>
+  </header>
+  <div id="map"></div>
+  <footer>
+    <div id="currentLoc"></div>
+    <div id="searchIcon"></div>
+    <div id="info"></div>
+  </footer>
+  <div id="popUp" class="loader hidden">
+    <div class="searchContainer">
+      <input id="searchBox" class="controls" type="text" placeholder="Enter address or zipcode...">
+      <button name="find" id="find" type="button"></button>
+      <div id="cancel"></div>
+    </div>
+    <div id="infoBox">
+      <h1>NYC Life List v0.9</h1>
+      <h3>Intended for both NY residents and visitors, this app helps find daily resources throughout Greater New York Area&mdash;namely, <em>wifi hotspots, subway entrances,</em> and <em>restrooms</em>.
+      </h3>
+      <p>This info block will be more refined in the coming weeks&mdash;both in terms of <strong>styling</strong> and <strong>content</strong>.</p>
+      <h4>Known issues:</h4>
+        <ul>
+          <li>....</li>
+          <li>....</li>
+        </ul>
+      <h4>Potential Features:</h4>
+        <ul>
+          <li>....</li>
+          <li>....</li>
+        </ul>
+    </div>
+  </div>
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB19_M2S_viEy4RAHgnxmTwtxPbiL0n6_A&libraries=places"></script>
+  <script src="_js/lib/jquery-3.1.1.min.js"></script>
+  <script src="_js/lib/underscore-min.js"></script>
+  <script src="_js/app.js"></script>
+</body>
+</html>

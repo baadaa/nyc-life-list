@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.1 (29687) - http://www.bohemiancoding.com/sketch -->
+    <title>Marker Copy 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F79935" offset="0%"></stop>
+            <stop stop-color="#F76B1C" offset="100%"></stop>
+        </linearGradient>
+        <path d="M17,34 C26.3888407,34 34,26.3888407 34,17 C34,7.61115925 26.3888407,0 17,0 C7.61115925,0 0,7.61115925 0,17 C0,26.3888407 7.61115925,34 17,34 Z" id="path-2"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="2-Subway-Entrance" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop:-Subway-Entrance-map-view" transform="translate(-348.000000, -123.000000)">
+            <g id="Markers" transform="translate(-1.000000, 108.000000)">
+                <g id="Marker-Copy-7" transform="translate(353.000000, 17.000000)">
+                    <g id="Marker">
+                        <g id="Oval-31">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                            <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        </g>
+                    </g>
+                    <polygon id="Shape" fill="#FFFFFF" points="24 24 24 18.3333333 24 7 18.3333333 7 18.3333333 12.6666667 12.6666667 12.6666667 12.6666667 18.3333333 7 18.3333333 7 24"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
