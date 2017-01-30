@@ -373,11 +373,27 @@ footer #info {
 #popUp #infoBox {
   color: #FFF;
   display: none;
-  max-width: calc(100% - 10em);
+  width: 30rem;
+}
+
+@media screen and (max-width: 768px) {
+  #popUp #infoBox {
+    max-width: calc(100% - 3rem);
+  }
 }
 
 #popUp #infoBox h1 {
   text-align: center;
+}
+
+#popUp #infoBox p {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+#popUp #infoBox a {
+  color: #FFF;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=styles.css.map */

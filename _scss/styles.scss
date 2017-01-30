@@ -285,10 +285,22 @@ footer {
   #infoBox {
     color:#FFF;
     display: none;
-    max-width: calc(100% - 10em);
+    width: 30rem;
+
+    @media screen and (max-width: $midScreen) {
+      max-width: calc(100% - 3rem);
+    }
 
     h1 {
       text-align: center;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+    a {
+      color: #FFF;
+      font-weight: 900;
     }
   }
 }
