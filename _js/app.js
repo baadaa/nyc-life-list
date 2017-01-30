@@ -159,7 +159,7 @@ $(document).ready(function() {
       // NOTE: NYC Open Data for restroom info is clumsy and incomplete.
       // Instead, a hand-crafted data set is used here. I have collected the data
       // online from a few sources, combed through and geocoded, and converted into JSON.
-      url: "../_data/nyc_restrooms.json",
+      url: "_data/nyc_restrooms.json",
       formatResponse: function(response) {
         return _.map(response, function(location){
           var lat = Number(location.latitude);
@@ -243,7 +243,6 @@ $(document).ready(function() {
       }
     },
     fetchRemoteData: function (feed) {
-      console.log('fetching remote');
       var _this = this;
       var request = _this.requestData(feed);
       request.done(function(response) {
@@ -266,7 +265,6 @@ $(document).ready(function() {
       });
     },
     fetchLocalStorageData: function(feed) {
-      console.log('fetching local');
       var retrievedData = localStorage.getItem(feed.name); // This is a JSON object
       var parsedData = JSON.parse(retrievedData);
       var retrievedMarkers = feed.formatResponse(parsedData);
