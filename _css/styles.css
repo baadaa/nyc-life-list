@@ -82,11 +82,11 @@ header .logo {
   -moz-justify-content: center;
   justify-content: center;
   -webkit-box-flex: 2;
-  -webkit-flex: 2 2 0;
+  -webkit-flex: 2 2 auto;
   -moz-box-flex: 2;
-  -moz-flex: 2 2 0;
-  -ms-flex: 2 2 0;
-  flex: 2 2 0;
+  -moz-flex: 2 2 auto;
+  -ms-flex: 2 2 auto;
+  flex: 2 2 auto;
   background: #DD4B26;
   font-weight: 700;
   color: #FFFFFF;

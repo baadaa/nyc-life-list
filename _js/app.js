@@ -200,9 +200,9 @@ $(document).ready(function() {
       this.markCurrentNav($('li#wifi')[0]); // NOTE: converting jQuery object to DOM object
       this.createMarkers(SOURCES[0]);
     },
-    bindEvents: function() {
-      // NOTE: binding each callback for 'this' keyword context
-      $('nav').on('click', this.changeSelection.bind(this));
+    bindEvents: function() { // NOTE: binding each callback for 'this' keyword context
+      // 'touchstart' for touch device in order to disable 'hover' behavior (unnecessary touble-tap)
+      $('nav ul li').on('touchstart click', this.changeSelection.bind(this));
       $('#currentLoc').on('click', this.findCurrentLocation.bind(this));
       $('#searchIcon').on('click', this.startSearch.bind(this));
       $('.logo').on('click', this.loadDefaultFeed.bind(this));

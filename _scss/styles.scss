@@ -68,7 +68,7 @@ header {
     @include flexbox;
     @include align-items(center);
     @include justify-content(center);
-    @include flex(2, 2, 0);
+    @include flex(2, 2, auto);
     background: $logo-color;
     font-weight: 700;
     color: #FFFFFF;
