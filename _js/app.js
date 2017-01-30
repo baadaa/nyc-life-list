@@ -31,22 +31,22 @@ $(document).ready(function() {
     activeInfoWindow: { alreadyOpen: false, newWindow: '' }, // Keep track of open infoWindow object to close it when a new one opens
     icons: { // Marker icons per data type
       user: {
-        url: "../images/user.svg",
+        url: "images/user.svg",
         scaledSize: new google.maps.Size(40,60),
         anchor: new google.maps.Point(20, 60),
       },
       wifi: {
-        url: "../images/wifi_marker.svg",
+        url: "images/wifi_marker.svg",
         scaledSize: new google.maps.Size(36,36),
         anchor: new google.maps.Point(18, 18)
       },
       subway: {
-        url: "../images/subway_marker.svg",
+        url: "images/subway_marker.svg",
         scaledSize: new google.maps.Size(36,36),
         anchor: new google.maps.Point(18, 18)
       },
       restroom: {
-        url: "../images/toilet_marker.svg",
+        url: "images/toilet_marker.svg",
         scaledSize: new google.maps.Size(36,36),
         anchor: new google.maps.Point(18, 18)
       }
