@@ -93,6 +93,19 @@ $(document).ready(function() {
           break;
       }
       return infoString;
+    },
+    localStorageAvailable: function() {
+      // NOTE: Method referenced from https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+      try {
+        var storage = window.localStorage,
+          x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+      }
+      catch(e) {
+        return false;
+      }
     }
   };
 
@@ -170,8 +183,8 @@ $(document).ready(function() {
 
   var App = {
     init: function() {
-      this.bindEvents();
       this.initMap();
+      this.bindEvents();
       this.loadDefaultFeed();
     },
     initMap: function () {
@@ -217,10 +230,24 @@ $(document).ready(function() {
     },
     createMarkers: function(feed) {
       var _this = this;
-      var request = _this.requestData(feed);
+      var markersToShow;
       _this.setView('load');
+      _this.removeDataMakrerSet(); // Remove any exising markers on the map
+
+      if (Utils.localStorageAvailable && localStorage[feed.name]) {
+        // if localStorage is available and not empty, access local data.
+        this.fetchLocalStorageData(feed);
+      } else {
+        // otherwise, fetch server data
+        this.fetchRemoteData(feed);
+      }
+    },
+    fetchRemoteData: function (feed) {
+      console.log('fetching remote');
+      var _this = this;
+      var request = _this.requestData(feed);
       request.done(function(response) {
-        _this.removedataMarkerSet(); // Remove any exising markers on the map
+        localStorage.setItem(feed.name, JSON.stringify(response)); // store data locally into localStorage
         var newMarkers = feed.formatResponse(response);
         newMarkers.forEach(function(item) {
           google.maps.event.addListener(item.marker, 'click', function() {
@@ -237,6 +264,22 @@ $(document).ready(function() {
         alert("Error occurred. Couldn't load requested data. Try again later.");
         _this.setView('map');
       });
+    },
+    fetchLocalStorageData: function(feed) {
+      console.log('fetching local');
+      var retrievedData = localStorage.getItem(feed.name); // This is a JSON object
+      var parsedData = JSON.parse(retrievedData);
+      var retrievedMarkers = feed.formatResponse(parsedData);
+      retrievedMarkers.forEach(function(item) {
+        google.maps.event.addListener(item.marker, 'click', function() {
+          if (UI.activeInfoWindow.alreadyOpen) {
+            UI.activeInfoWindow.newWindow.close();
+          } else { UI.activeInfoWindow.alreadyOpen = true; }
+          item.infoWindow.open(UI.map, item.marker);
+          UI.activeInfoWindow.newWindow = item.infoWindow;
+        });
+      });
+      this.setView('map');
     },
     findCurrentLocation: function() {
       var _this = this;
@@ -275,7 +318,7 @@ $(document).ready(function() {
         UI.userMarkerSet = [];
       }
     },
-    removedataMarkerSet: function() {
+    removeDataMakrerSet: function() {
       UI.dataMarkerSet.forEach(function(marker){
         marker.setMap(null);
       });
