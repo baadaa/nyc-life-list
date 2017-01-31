@@ -1,0 +1,4 @@
+_css/normalize.css linguist-vendored
+_js/lib/* linguist-vendored
+_scss/_flex.scss linguist-vendored
+*.md linguist-documentation
