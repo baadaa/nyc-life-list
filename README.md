@@ -14,6 +14,7 @@ New York City has an insane variety of *things* to offer; from [food trucks](htt
 2. Detecting the current location, **indicate the accesses nearest** to the user.
 3. **Clicking a place marker** on a map will reveal *the details about the venue*. (E.g. SSID for WiFi access, running trains for subway entrance, etc.)
 4. User can **search by address or/and zip code** for planning trips in advance.
+5. `ajax` call results are stored locally if user's browser supports `localStorage`, so that API calls don't have to be made every time user switches navigation.
 
 ---
 
