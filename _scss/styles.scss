@@ -294,6 +294,18 @@ footer {
     h1 {
       text-align: center;
     }
+    h5 {
+      font-weight: 400;
+      text-align: center;
+      margin: {
+        top: 1rem;
+        bottom: 2rem;
+      }
+      a {
+        text-decoration: none;
+        font-weight: 700;
+      }
+    }
     p {
       font-size: 1.1rem;
       line-height: 1.5rem;

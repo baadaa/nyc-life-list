@@ -386,6 +386,18 @@ footer #info {
   text-align: center;
 }
 
+#popUp #infoBox h5 {
+  font-weight: 400;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#popUp #infoBox h5 a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
 #popUp #infoBox p {
   font-size: 1.1rem;
   line-height: 1.5rem;
