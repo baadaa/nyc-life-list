@@ -235,28 +235,20 @@ $(document).ready(function() {
       _this.removeDataMakrerSet(); // Remove any exising markers on the map
 
       if (Utils.localStorageAvailable && localStorage[feed.name]) {
-        // if localStorage is available and not empty, access local data.
+        // if localStorage is available and requested data feed is already stored locally, access local data.
         this.fetchLocalStorageData(feed);
       } else {
         // otherwise, fetch server data
         this.fetchRemoteData(feed);
       }
     },
-    fetchRemoteData: function (feed) {
+    fetchRemoteData: function(feed) {
       var _this = this;
       var request = _this.requestData(feed);
       request.done(function(response) {
         localStorage.setItem(feed.name, JSON.stringify(response)); // store data locally into localStorage
         var newMarkers = feed.formatResponse(response);
-        newMarkers.forEach(function(item) {
-          google.maps.event.addListener(item.marker, 'click', function() {
-            if (UI.activeInfoWindow.alreadyOpen) {
-              UI.activeInfoWindow.newWindow.close();
-            } else { UI.activeInfoWindow.alreadyOpen = true; }
-            item.infoWindow.open(UI.map, item.marker);
-            UI.activeInfoWindow.newWindow = item.infoWindow;
-          });
-        });
+        _this.handleInfoWindow(newMarkers);
         _this.setView('map');
       });
       request.fail(function(){
@@ -268,7 +260,12 @@ $(document).ready(function() {
       var retrievedData = localStorage.getItem(feed.name); // This is a JSON object
       var parsedData = JSON.parse(retrievedData);
       var retrievedMarkers = feed.formatResponse(parsedData);
-      retrievedMarkers.forEach(function(item) {
+      this.handleInfoWindow(retrievedMarkers);
+      this.setView('map');
+    },
+    handleInfoWindow: function(markers) {
+      markers.forEach(function(item) {
+        // NOTE: Make sure only one infoWindow stays open at a time
         google.maps.event.addListener(item.marker, 'click', function() {
           if (UI.activeInfoWindow.alreadyOpen) {
             UI.activeInfoWindow.newWindow.close();
@@ -277,7 +274,6 @@ $(document).ready(function() {
           UI.activeInfoWindow.newWindow = item.infoWindow;
         });
       });
-      this.setView('map');
     },
     findCurrentLocation: function() {
       var _this = this;
@@ -311,7 +307,6 @@ $(document).ready(function() {
       if (UI.userMarkerSet.length !== 0) {
         UI.userMarkerSet.forEach(function(marker) {
           marker.setMap(null);
-          console.log('dele');
         });
         UI.userMarkerSet = [];
       }
