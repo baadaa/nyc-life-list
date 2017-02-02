@@ -29,8 +29,9 @@ $(document).ready(function() {
     initialZoom: 14,
     currentFeed: 'wifi', // Default data feed at first load
     activeInfoWindow: { alreadyOpen: false, newWindow: '' }, // Keep track of open infoWindow object to close it when a new one opens
+    infoWindowSize: new google.maps.Size(200,50),
     icons: { // Marker icons per data type
-      user: {
+      user: { // User's current location or search result
         url: "images/user.svg",
         scaledSize: new google.maps.Size(40,60),
         anchor: new google.maps.Point(20, 60),
@@ -56,7 +57,7 @@ $(document).ready(function() {
 
   var Utils = { // NOTE: Miscellaneous methods
     getInfoMarkup: function(source, content) {
-      var infoString;
+      var infoString; // formatting content for infoWindow per data type
       switch (source) {
         case 'wifi':
           infoString =
@@ -96,6 +97,7 @@ $(document).ready(function() {
     },
     localStorageAvailable: function() {
       // NOTE: Method referenced from https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+      // This checks the browser for localStorage supports, and returns Boolean value accordingly.
       try {
         var storage = window.localStorage,
           x = '__storage_test__';
@@ -120,7 +122,7 @@ $(document).ready(function() {
           var infoContent = Utils.getInfoMarkup('wifi', location.properties);
           var infoWindow = new google.maps.InfoWindow({
             content: infoContent,
-            size: new google.maps.Size(200,50)
+            size: UI.infoWindowSize
           });
           var marker = new google.maps.Marker({
             position: {lat: lat, lng: lon},
@@ -142,7 +144,7 @@ $(document).ready(function() {
           var infoContent = Utils.getInfoMarkup('subway', location.properties);
           var infoWindow = new google.maps.InfoWindow({
             content: infoContent,
-            size: new google.maps.Size(200,50)
+            size: UI.infoWindowSize
           });
           var marker = new google.maps.Marker({
             position: {lat: lat, lng: lon},
@@ -167,7 +169,7 @@ $(document).ready(function() {
           var infoContent = Utils.getInfoMarkup('restroom', location);
           var infoWindow = new google.maps.InfoWindow({
             content: infoContent,
-            size: new google.maps.Size(200,50)
+            size: UI.infoWindowSize
           });
           var marker = new google.maps.Marker({
             position: {lat: lat, lng: lon},
@@ -201,7 +203,8 @@ $(document).ready(function() {
       this.createMarkers(SOURCES[0]);
     },
     bindEvents: function() { // NOTE: binding each callback for 'this' keyword context
-      // 'touchstart' for touch device in order to disable 'hover' behavior (unnecessary touble-tap)
+      // 'touchstart' is for touch device in order to disable 'hover' behavior.
+      // iOS device treats the first click as hover by default, which is unnecessary here.
       $('nav ul li').on('touchstart click', this.changeSelection.bind(this));
       $('#currentLoc').on('click', this.findCurrentLocation.bind(this));
       $('#searchIcon').on('click', this.startSearch.bind(this));
@@ -229,10 +232,9 @@ $(document).ready(function() {
       });
     },
     createMarkers: function(feed) {
-      var _this = this;
       var markersToShow;
-      _this.setView('load');
-      _this.removeDataMakrerSet(); // Remove any exising markers on the map
+      this.setView('load');
+      this.removeDataMakrerSet(); // Remove any exising markers on the map
 
       if (Utils.localStorageAvailable && localStorage[feed.name]) {
         // if localStorage is available and requested data feed is already stored locally, access local data.
@@ -304,18 +306,18 @@ $(document).ready(function() {
       UI.userMarkerSet.push(marker);
     },
     removeUserMarkerSet: function() {
-      if (UI.userMarkerSet.length !== 0) {
+      if (UI.userMarkerSet.length !== 0) { // Run only if there's any existing marker on the map
         UI.userMarkerSet.forEach(function(marker) {
-          marker.setMap(null);
+          marker.setMap(null); // Turn markers off the map
         });
-        UI.userMarkerSet = [];
+        UI.userMarkerSet = []; // Remove the markers from memory
       }
     },
     removeDataMakrerSet: function() {
       UI.dataMarkerSet.forEach(function(marker){
-        marker.setMap(null);
+        marker.setMap(null); // Turn markers off the map
       });
-      UI.dataMarkerSet = [];
+      UI.dataMarkerSet = []; // Remove the markers from memory
     },
     startSearch: function() {
       var _this = this;
