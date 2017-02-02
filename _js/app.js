@@ -209,9 +209,10 @@ $(document).ready(function() {
       $('#currentLoc').on('click', this.findCurrentLocation.bind(this));
       $('#searchIcon').on('click', this.startSearch.bind(this));
       $('.logo').on('click', this.loadDefaultFeed.bind(this));
-      $('#cancel').on('click', this.cancelSearch.bind(this));
+      $('#cancel').on('click', this.cancelOverlay.bind(this));
       $('#info').on('click', this.showAppInfo.bind(this));
       $('button#find').on('click', this.searchButtonClicked.bind(this));
+      $(document).keydown(this.checkForEscapeKey.bind(this));
     },
     markCurrentNav: function(currentNav) {
       // NOTE: Update nav buttons per user selection
@@ -323,7 +324,8 @@ $(document).ready(function() {
       var _this = this;
       this.setView('search');
       $('#searchBox, button#find').show();
-      $(UI.input).val('');
+      $(UI.input).val(''); // Empty any previous search query in the input box
+      $(UI.input).focus(); // Place the cursor in the input box
       var search = new google.maps.places.SearchBox(UI.input);
       UI.map.addListener('bounds_changed', function () { // Bias the search results toward map's viewport
         search.setBounds(UI.map.getBounds());
@@ -353,7 +355,7 @@ $(document).ready(function() {
         _this.redrawMap(data[0].geometry.location);
       });
     },
-    cancelSearch: function() {
+    cancelOverlay: function() {
       this.setView('map');
     },
     redrawMap: function(location) {
@@ -362,6 +364,12 @@ $(document).ready(function() {
       UI.map.panTo(location);
       UI.map.setZoom(16);
 
+    },
+    checkForEscapeKey: function(e) {
+      var ESC = 27;
+      if (e.which === ESC) {
+        this.cancelOverlay();
+      }
     },
     setView: function(view) {
       switch(view) {
